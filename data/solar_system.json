@@ -1,8 +1,8 @@
 {
     "star_system": {
-        "name": "Star-1903",
-        "x": -31.995154377280684,
-        "y": -42.530439960016444,
+        "name": "Star-4571",
+        "x": 50.62981295466028,
+        "y": -79.73094831622814,
         "classification": "M",
         "color": [
             255,
@@ -13,11 +13,15 @@
     "planets": [
         {
             "name": "Planet-0",
-            "x": 6.170304734015278,
-            "y": 5.300993692456317,
+            "x": -1.2954686363249646,
+            "y": -1.0812686069035866,
             "type": "IceGiant",
-            "size": 1.159008043919438,
+            "size": 1.5910505811137727,
             "habitable": false,
+            "water_percentage": 0.0,
+            "climate": "",
+            "atmosphere": "",
+            "gravity": 0.0,
             "color": [
                 150,
                 200,
@@ -26,24 +30,32 @@
         },
         {
             "name": "Planet-1",
-            "x": 6.5365599146910105,
-            "y": 6.230545167186634,
-            "type": "GasGiant",
-            "size": 2.3789005587822,
-            "habitable": false,
+            "x": -0.04042320807288919,
+            "y": 0.24042770623634396,
+            "type": "Rocky",
+            "size": 2.041006722387518,
+            "habitable": true,
+            "water_percentage": 0.743150355057985,
+            "climate": "Hot",
+            "atmosphere": "Thick",
+            "gravity": 1.0783121034037113,
             "color": [
-                200,
                 150,
-                100
+                100,
+                50
             ]
         },
         {
             "name": "Planet-2",
-            "x": 6.301208636449762,
-            "y": 6.0472328044182415,
+            "x": 3.29898193411303,
+            "y": 0.8552701109627828,
             "type": "IceGiant",
-            "size": 0.6195319581622725,
+            "size": 1.482035969591222,
             "habitable": false,
+            "water_percentage": 0.0,
+            "climate": "",
+            "atmosphere": "",
+            "gravity": 0.0,
             "color": [
                 150,
                 200,
@@ -52,11 +64,15 @@
         },
         {
             "name": "Planet-3",
-            "x": 1.70648543596642,
-            "y": 2.7101265027493784,
+            "x": -4.926324746747035,
+            "y": 4.049502008732345,
             "type": "IceGiant",
-            "size": 0.5634006800195155,
+            "size": 1.4264672241975132,
             "habitable": false,
+            "water_percentage": 0.0,
+            "climate": "",
+            "atmosphere": "",
+            "gravity": 0.0,
             "color": [
                 150,
                 200,

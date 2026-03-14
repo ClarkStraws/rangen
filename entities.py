@@ -65,4 +65,16 @@ class Planet:
     type: str
     size: float
     habitable: bool
+    water_percentage: float
+    climate: str
+    atmosphere: str
+    gravity: float
     color: Tuple[int, int, int]
+
+
+@dataclass
+class LifeForm:
+    planet: Planet
+    name: str
+    habitat: str     # Aquatic, Terrestrial, Aerial, Subsurface
+    type: str        # Plant, Animal, Fungal, etc.
