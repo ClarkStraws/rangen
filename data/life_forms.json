@@ -1,0 +1,10 @@
+{
+  "life_forms": [
+    {
+      "name": "Avian of Planet-1",
+      "planet": "Planet-1",
+      "habitat": "Terrestrial",
+      "type": "Avian"
+    }
+  ]
+}

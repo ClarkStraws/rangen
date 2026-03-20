@@ -1,3 +1,4 @@
+import json
 import random
 from entities import Planet, LifeForm
 import random
@@ -5,12 +6,28 @@ import random
 life_types = ["Aquatic", "Terrestrial", "Subterranean"]
 life_forms = ["Fish", "Mollusk", "Coral", "Plant", "Amphibian", "Arthropod", "Insectoid", "Fungal", "Avian", "Mammal", "Reptile"]
 
+def save_life_forms(life_forms: list[LifeForm]) -> None:
+    data = []
+    for life in life_forms:
+        data.append({
+            "name": life.name,
+            "planet": life.planet.name,
+            "habitat": life.habitat,
+            "type": life.type
+        })
+    with open("data/life_forms.json", "w") as f:
+        json.dump({"life_forms": data}, f, indent=2)
+        
 def generate_life(planets: list[Planet]) -> list[LifeForm]:
     life_forms = []
     for planet in planets:
-        life = generate_life_form(planet)
-        if life:
-            life_forms.append(life)
+        num_life_forms = random.randint(1, 3)
+        for _ in range(num_life_forms):
+            life = generate_life_form(planet)
+            if life:
+                life_forms.append(life)
+
+    save_life_forms(life_forms)
     return life_forms
 
 def generate_life_form(planet: Planet) -> LifeForm:

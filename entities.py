@@ -78,3 +78,31 @@ class LifeForm:
     name: str
     habitat: str     # Aquatic, Terrestrial, Aerial, Subsurface
     type: str        # Plant, Animal, Fungal, etc.
+
+class LocationTrait(Enum):
+    WATER = auto()
+    FOREST = auto()
+    MOUNTAINS = auto()
+    PLAINS = auto()
+    DESERT = auto()
+    TUNDRA = auto()
+    UNDEFINED = auto()
+
+class ResourceTrait(Enum):
+    POOR = auto()
+    AVERAGE = auto()
+    RICH = auto()
+    UNDEFINED = auto()
+
+@dataclass
+class Tribe:
+    name: str
+    home_planet: Planet
+    location: Tuple[float, float] = (0.0, 0.0)
+    location_trait: LocationTrait = LocationTrait.UNDEFINED
+    resource_trait: ResourceTrait = ResourceTrait.UNDEFINED
+    religion_scale: float = 0.0  # -1.0 (secular) to 1.0 (religious)
+    social_scale: float = 0.0       # -1.0 (individualistic) to 1.0 (collectivist)
+    size: float = 1.0  # relative size of the civilization (population, influence, etc.)
+    strength: float = 1.0  # relative strength (military, economic, etc.)
+    technology: float = 1.0  # relative technological level

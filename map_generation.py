@@ -3,10 +3,7 @@ from typing import Union
 import random
 import math
 from perlin_noise import PerlinNoise
-
-MAP_WIDTH = 800
-MAP_HEIGHT = 400
-
+from settings import MAP_WIDTH, MAP_HEIGHT
 
 def generate_maps_for_planets(planets: list[Planet]) -> None:
     for planet in planets:
@@ -18,7 +15,7 @@ def generate_map(planet: Planet) -> None:
     map_data = []
     biome_types = ["Water", "Desert", "Forest", "Mountains", "Plains", "Tundra"]
 
-    for y in range(MAP_HEIGHT):
+    for y in range():
         row = []
         for x in range(MAP_WIDTH):
             # Sample noise and adjust based on planet properties
