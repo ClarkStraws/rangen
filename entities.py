@@ -1,6 +1,11 @@
 from dataclasses import dataclass
+from random import random
 from typing import List, Tuple, Dict, Optional
 from enum import Enum, auto
+from abc import ABC, abstractmethod
+from settings import MAP_WIDTH, MAP_HEIGHT
+import random
+from math import sqrt
 
 class BinaryArchetype(Enum):
     TWIN_MAIN_SEQUENCE = auto()
@@ -106,3 +111,4 @@ class Tribe:
     size: float = 1.0  # relative size of the civilization (population, influence, etc.)
     strength: float = 1.0  # relative strength (military, economic, etc.)
     technology: float = 1.0  # relative technological level
+    is_eliminated: bool = False
