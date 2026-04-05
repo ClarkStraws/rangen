@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Swarm", "plural": "Swarms"},
+    {"singular": "Hive", "plural": "Hives"},
+    {"singular": "Colony", "plural": "Colonies"},
+    {"singular": "Mound", "plural": "Mounds"},
+    {"singular": "Chamber", "plural": "Chambers"},
+    {"singular": "Legion", "plural": "Legions"},
+    {"singular": "Horde", "plural": "Hordes"},
+    {"singular": "Cluster", "plural": "Clusters"},
+    {"singular": "Brood", "plural": "Broods"},
+    {"singular": "Carapace", "plural": "Carapaces"},
+    {"singular": "Molt", "plural": "Molts"},
+    {"singular": "Clutch", "plural": "Clutches"}
+  ],
+  "adjectives": [
+    "Chitinous",
+    "Compound-eyed",
+    "Segmented",
+    "Exoskeletal",
+    "Swarming",
+    "Colonial",
+    "Mandibular",
+    "Iridescent",
+    "Multilegged",
+    "Burrowing"
+  ]
+}

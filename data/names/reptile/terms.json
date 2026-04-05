@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Clutch", "plural": "Clutches"},
+    {"singular": "Pit", "plural": "Pits"},
+    {"singular": "Knot", "plural": "Knots"},
+    {"singular": "Bask", "plural": "Basks"},
+    {"singular": "Coil", "plural": "Coils"},
+    {"singular": "Den", "plural": "Dens"},
+    {"singular": "Brood", "plural": "Broods"},
+    {"singular": "Mire", "plural": "Mires"},
+    {"singular": "Scale", "plural": "Scales"},
+    {"singular": "Shed", "plural": "Sheds"},
+    {"singular": "Warren", "plural": "Warrens"},
+    {"singular": "Tangle", "plural": "Tangles"}
+  ],
+  "adjectives": [
+    "Scaled",
+    "Cold-blooded",
+    "Armored",
+    "Venomous",
+    "Ancient",
+    "Slithering",
+    "Coiled",
+    "Primordial",
+    "Shedding",
+    "Basking"
+  ]
+}

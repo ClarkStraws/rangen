@@ -2,9 +2,8 @@ from solar_system_generation import generate_solar_system
 from map_generation import generate_maps_for_planets
 from life_generation import generate_life
 from entities import Planet
-from simulation_entities import AncientHistoryPhase
+from civ_simulation import simulate_history
 from civ_generation import generate_tribes
-from civ_simulation import ancient_history_simulation
 import json
 import os
 
@@ -29,12 +28,7 @@ def main() -> None:
     
     tribes = generate_tribes(life, planet_maps)
 
-    ancient_history = AncientHistoryPhase()
-    result = ancient_history.run(tribes, ticks=10)
-    print("Ancient History Simulation Result:")
-    for event in result.history:
-        if event:
-            print(event)
+    simulate_history(tribes, ticks=10)
 
 
 if __name__ == "__main__":

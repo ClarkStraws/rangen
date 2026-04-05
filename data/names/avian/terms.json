@@ -1,0 +1,29 @@
+{
+  "nouns": [
+    {"singular": "Flock", "plural": "Flocks"},
+    {"singular": "Roost", "plural": "Roosts"},
+    {"singular": "Aerie", "plural": "Aeries"},
+    {"singular": "Clutch", "plural": "Clutches"},
+    {"singular": "Murmuration", "plural": "Murmurations"},
+    {"singular": "Covey", "plural": "Coveys"},
+    {"singular": "Parliament", "plural": "Parliaments"},
+    {"singular": "Skein", "plural": "Skeins"},
+    {"singular": "Wing", "plural": "Wings"},
+    {"singular": "Plume", "plural": "Plumes"},
+    {"singular": "Talon", "plural": "Talons"},
+    {"singular": "Nest", "plural": "Nests"},
+    {"singular": "Brood", "plural": "Broods"}
+  ],
+  "adjectives": [
+    "Winged",
+    "Soaring",
+    "Feathered",
+    "Crested",
+    "Hollow-boned",
+    "Migratory",
+    "Downy",
+    "Aerial",
+    "Plumed",
+    "Taloned"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nouns": [
+    {"singular": "Grove", "plural": "Groves"},
+    {"singular": "Canopy", "plural": "Canopies"},
+    {"singular": "Thicket", "plural": "Thickets"},
+    {"singular": "Root", "plural": "Roots"},
+    {"singular": "Spore", "plural": "Spores"},
+    {"singular": "Mycelium", "plural": "Mycelia"},
+    {"singular": "Frond", "plural": "Fronds"},
+    {"singular": "Tendril", "plural": "Tendrils"},
+    {"singular": "Bloom", "plural": "Blooms"},
+    {"singular": "Stand", "plural": "Stands"},
+    {"singular": "Understory", "plural": "Understories"},
+    {"singular": "Rhizome", "plural": "Rhizomes"}
+  ],
+  "adjectives": [
+    "Rooted",
+    "Photosynthetic",
+    "Chlorophyllic",
+    "Mycorrhizal",
+    "Deciduous",
+    "Perennial",
+    "Ligneous",
+    "Spore-bearing",
+    "Canopied",
+    "Fibrous",
+    "Symbiotic",
+    "Ancient-growth"
+  ]
+}
