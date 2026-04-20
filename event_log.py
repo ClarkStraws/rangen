@@ -1,9 +1,17 @@
-'''
-The process_event_log function takes the event log and turns it into a readable history.
-It will present logged data in a way that is easy to understand and provides insights into the history of the tribes.
-It will also be user-facing output text that will be readable
-'''
-def process_event_log(event_log: list[str]) -> None:
-    for event in event_log:
-        if event:
-            print(event)
+from event_templates import render_event
+
+
+def process_event_log(history: list, output_file: str = None) -> None:
+    lines = []
+    for event in history:
+        text = render_event(event)
+        if text:
+            lines.append(text)
+
+    output = "\n".join(lines)
+    print(output)
+
+    if output_file:
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write(output)
+        print(f"\nHistory saved to {output_file}")

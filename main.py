@@ -4,6 +4,7 @@ from life_generation import generate_life
 from entities import Planet
 from civ_simulation import simulate_history
 from civ_generation import generate_tribes
+from event_log import process_event_log
 import json
 import os
 
@@ -28,7 +29,8 @@ def main() -> None:
     
     tribes = generate_tribes(life, planet_maps)
 
-    simulate_history(tribes, ticks=10)
+    result = simulate_history(tribes, ticks=10)
+    process_event_log(result.history, output_file="data/histories/history.txt")
 
 
 if __name__ == "__main__":
