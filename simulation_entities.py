@@ -2,7 +2,18 @@ from dataclasses import dataclass
 from typing import List, Tuple, Dict, Optional
 from enum import Enum, auto
 from abc import ABC, abstractmethod
-from settings import MAP_WIDTH, MAP_HEIGHT
+from settings import (
+    MAP_WIDTH, MAP_HEIGHT,
+    TRIBE_CONTACT_DISTANCE, TRIBE_ELIMINATION_THRESHOLD,
+    CATASTROPHIC_EVENT_CHANCE, WEATHER_EVENT_CHANCE,
+    CATASTROPHIC_EVENT_RADIUS_MIN, CATASTROPHIC_EVENT_RADIUS_MAX,
+    WEATHER_EVENT_RADIUS_MIN, WEATHER_EVENT_RADIUS_MAX,
+    SOCIETAL_EVENT_CHANCE,
+    POOR_STRENGTH_THRESHOLD, RICH_STRENGTH_THRESHOLD,
+    HIGH_RELIGION_THRESHOLD, LOW_RELIGION_THRESHOLD, HIGH_SOCIAL_THRESHOLD,
+    RESOURCE_CONFLICT_CHANCE, RELIGIOUS_CONFLICT_CHANCE, RELIGIOUS_CONFLICT_THRESHOLD,
+    MERGE_CHANCE, MERGE_SOCIAL_THRESHOLD,
+)
 from entities import Tribe, Planet, ResourceTrait
 from math import sqrt
 import random
@@ -76,7 +87,7 @@ class AncientHistoryPhase(SimulationPhase):
                 tribe2 = tribes[j]
                 if tribe1.home_planet == tribe2.home_planet:
                     distance = sqrt((tribe1.location[0] - tribe2.location[0]) ** 2 + (tribe1.location[1] - tribe2.location[1]) ** 2)
-                    if distance < 150:  # arbitrary contact distance threshold
+                    if distance < TRIBE_CONTACT_DISTANCE:
                         contacted_tribes.append((tribe1, tribe2))
         return contacted_tribes
         
@@ -92,28 +103,28 @@ class AncientHistoryPhase(SimulationPhase):
             location_xy = (int(random.uniform(0, MAP_WIDTH)), int(random.uniform(0, MAP_HEIGHT)))
 
             if event_type in ["Meteor", "Volcano", "Earthquake", "Tsunami"]:
-                if random.random() < 0.1:
+                if random.random() < CATASTROPHIC_EVENT_CHANCE:
                     events.append(HistoryEvent(category="climate", event_type=event_type, tick=tick, planet=planet.name))
-                    radius = random.randint(150, 350)
+                    radius = random.randint(CATASTROPHIC_EVENT_RADIUS_MIN, CATASTROPHIC_EVENT_RADIUS_MAX)
                     for tribe in tribes:
                         distance = sqrt((tribe.location[0] - location_xy[0]) ** 2 + (tribe.location[1] - location_xy[1]) ** 2)
                         if distance < radius and tribe.home_planet == planet:
                             tribe.strength *= random.uniform(0.25, 0.5)
-                            if tribe.strength < 0.1:
+                            if tribe.strength < TRIBE_ELIMINATION_THRESHOLD:
                                 tribe.is_eliminated = True
                                 events.append(HistoryEvent(category="climate_tribe", event_type=event_type, tick=tick, tribe=tribe.name, planet=planet.name, outcome="destroyed"))
                             else:
                                 events.append(HistoryEvent(category="climate_tribe", event_type=event_type, tick=tick, tribe=tribe.name, planet=planet.name, outcome="affected"))
 
             elif event_type in ["Hurricane", "Drought", "Flood"]:
-                if random.random() < 0.3:
+                if random.random() < WEATHER_EVENT_CHANCE:
                     events.append(HistoryEvent(category="climate", event_type=event_type, tick=tick, planet=planet.name))
-                    radius = random.randint(50, 120)
+                    radius = random.randint(WEATHER_EVENT_RADIUS_MIN, WEATHER_EVENT_RADIUS_MAX)
                     for tribe in tribes:
                         distance = sqrt((tribe.location[0] - location_xy[0]) ** 2 + (tribe.location[1] - location_xy[1]) ** 2)
                         if distance < radius and tribe.home_planet == planet:
                             tribe.strength *= random.uniform(0.5, 0.9)
-                            if tribe.strength < 0.1:
+                            if tribe.strength < TRIBE_ELIMINATION_THRESHOLD:
                                 tribe.is_eliminated = True
                                 events.append(HistoryEvent(category="climate_tribe", event_type=event_type, tick=tick, tribe=tribe.name, planet=planet.name, outcome="destroyed"))
                             else:
@@ -122,30 +133,30 @@ class AncientHistoryPhase(SimulationPhase):
 
     def create_societal_events(self, tribes: list[Tribe], tick: int) -> list[HistoryEvent]:
         events = []
-        if random.random() < 0.2:
+        if random.random() < SOCIETAL_EVENT_CHANCE:
             for tribe in tribes:
-                if tribe.resource_trait == ResourceTrait.POOR or tribe.strength < 0.5:
+                if tribe.resource_trait == ResourceTrait.POOR or tribe.strength < POOR_STRENGTH_THRESHOLD:
                     event_type = random.choice(["Famine", "Plague", "Rebellion"])
                     tribe.strength *= random.uniform(0.5, 0.9)
 
-                elif tribe.resource_trait == ResourceTrait.RICH and tribe.strength >= 0.75:
+                elif tribe.resource_trait == ResourceTrait.RICH and tribe.strength >= RICH_STRENGTH_THRESHOLD:
                     event_type = random.choice(["Technological Breakthrough", "Cultural Renaissance"])
                     tribe.technology *= random.uniform(1.1, 1.5)
                     tribe.social_scale += random.uniform(-0.1, 0.1)
                     tribe.strength *= random.uniform(1.05, 1.2)
                     tribe.size *= random.uniform(1.05, 1.2)
 
-                elif tribe.religion_scale > 0.5:
+                elif tribe.religion_scale > HIGH_RELIGION_THRESHOLD:
                     event_type = random.choice(["Religious Schism", "New Religion Founded"])
                     tribe.religion_scale += random.uniform(-0.2, 0.2)
                     tribe.social_scale += random.uniform(-0.1, 0.1)
 
-                elif tribe.religion_scale < -0.5:
+                elif tribe.religion_scale < LOW_RELIGION_THRESHOLD:
                     event_type = random.choice(["Secular Uprising", "Philosophical Breakthrough"])
                     tribe.social_scale += random.uniform(-0.1, 0.1)
                     tribe.technology *= random.uniform(1.05, 1.2)
 
-                elif tribe.social_scale > 0.5:
+                elif tribe.social_scale > HIGH_SOCIAL_THRESHOLD:
                     event_type = random.choice(["Collective Movement", "Social Reform"])
                     tribe.social_scale += random.uniform(-0.1, 0.1)
                     tribe.strength *= random.uniform(1.05, 1.2)
@@ -155,7 +166,7 @@ class AncientHistoryPhase(SimulationPhase):
                     tribe.social_scale += random.uniform(-0.2, 0.2)
                     tribe.strength *= random.uniform(0.1, 0.5)
 
-                if tribe.strength < 0.1:
+                if tribe.strength < TRIBE_ELIMINATION_THRESHOLD:
                     tribe.is_eliminated = True
                     events.append(HistoryEvent(category="societal", event_type=event_type, tick=tick, tribe=tribe.name, outcome="destroyed"))
                 else:
@@ -173,7 +184,7 @@ class AncientHistoryPhase(SimulationPhase):
                 continue
 
             if tribe1.resource_trait != tribe2.resource_trait:
-                if random.random() < 0.6:
+                if random.random() < RESOURCE_CONFLICT_CHANCE:
                     stronger = tribe1 if tribe1.strength > tribe2.strength else tribe2
                     weaker = tribe2 if stronger == tribe1 else tribe1
 
@@ -185,7 +196,7 @@ class AncientHistoryPhase(SimulationPhase):
                         weaker.strength *= random.uniform(0.1, 0.9)
                         stronger.resource_trait = ResourceTrait.RICH
                         weaker.resource_trait = ResourceTrait.POOR
-                        if weaker.strength < 0.1:
+                        if weaker.strength < TRIBE_ELIMINATION_THRESHOLD:
                             weaker.is_eliminated = True
                             events.append(HistoryEvent(category="conflict_result", event_type="resource", tick=tick, tribe=weaker.name, outcome="destroyed"))
                         else:
@@ -195,15 +206,15 @@ class AncientHistoryPhase(SimulationPhase):
                         stronger.strength *= random.uniform(0.1, 0.9)
                         weaker.resource_trait = ResourceTrait.RICH
                         stronger.resource_trait = ResourceTrait.POOR
-                        if stronger.strength < 0.1:
+                        if stronger.strength < TRIBE_ELIMINATION_THRESHOLD:
                             stronger.is_eliminated = True
                             events.append(HistoryEvent(category="conflict_result", event_type="resource", tick=tick, tribe=stronger.name, outcome="destroyed"))
                         else:
                             events.append(HistoryEvent(category="conflict_result", event_type="resource", tick=tick, tribe=stronger.name, outcome="weakened"))
                 continue
 
-            if abs(tribe1.religion_scale - tribe2.religion_scale) > .45:
-                if random.random() < 0.5:
+            if abs(tribe1.religion_scale - tribe2.religion_scale) > RELIGIOUS_CONFLICT_THRESHOLD:
+                if random.random() < RELIGIOUS_CONFLICT_CHANCE:
                     stronger = tribe1 if tribe1.strength > tribe2.strength else tribe2
                     weaker = tribe2 if stronger == tribe1 else tribe1
 
@@ -216,7 +227,7 @@ class AncientHistoryPhase(SimulationPhase):
                     if random.random() < win_chance:
                         events.append(HistoryEvent(category="conflict", event_type="religious", tick=tick, tribe=stronger.name, enemy=weaker.name, planet=stronger.home_planet.name, outcome="won"))
                         weaker.strength *= random.uniform(0.1, 0.9)
-                        if weaker.strength < 0.1:
+                        if weaker.strength < TRIBE_ELIMINATION_THRESHOLD:
                             weaker.is_eliminated = True
                             events.append(HistoryEvent(category="conflict_result", event_type="religious", tick=tick, tribe=weaker.name, outcome="destroyed"))
                         else:
@@ -224,15 +235,15 @@ class AncientHistoryPhase(SimulationPhase):
                     else:
                         events.append(HistoryEvent(category="conflict", event_type="religious", tick=tick, tribe=weaker.name, enemy=stronger.name, planet=weaker.home_planet.name, outcome="defended"))
                         stronger.strength *= random.uniform(0.1, 0.9)
-                        if stronger.strength < 0.1:
+                        if stronger.strength < TRIBE_ELIMINATION_THRESHOLD:
                             stronger.is_eliminated = True
                             events.append(HistoryEvent(category="conflict_result", event_type="religious", tick=tick, tribe=stronger.name, outcome="destroyed"))
                         else:
                             events.append(HistoryEvent(category="conflict_result", event_type="religious", tick=tick, tribe=stronger.name, outcome="weakened"))
                 continue
 
-            if abs(tribe1.social_scale - tribe2.social_scale) < 0.25 and tribe1.resource_trait == tribe2.resource_trait:
-                if random.random() < 0.5:
+            if abs(tribe1.social_scale - tribe2.social_scale) < MERGE_SOCIAL_THRESHOLD and tribe1.resource_trait == tribe2.resource_trait:
+                if random.random() < MERGE_CHANCE:
                     stronger = tribe1 if tribe1.size > tribe2.size else tribe2
                     weaker = tribe2 if stronger == tribe1 else tribe1
 

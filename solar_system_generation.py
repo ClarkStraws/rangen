@@ -2,6 +2,7 @@ import random
 from typing import Union, Optional, List
 from entities import Star, BinaryStarSystem, BinaryArchetype, BinaryOrbitType, ZoneProfile, Planet
 from profiles import generate_planet_profile
+from settings import SINGLE_STAR_PROBABILITY, HABITABILITY_CHANCE
 import math
 import json
 
@@ -110,7 +111,7 @@ def generate_planets_in_zone(zone: ZoneProfile) -> List[Planet]:
         # habitability - simple model: only rocky/superearths in the inner zone can be habitable
         habitable = False
         if planet_type in ["Rocky", "SuperEarth"] and distance < zone.inner_zone_end_au:
-            habitable = random.random() < .5  # 50% chance for habitable conditions
+            habitable = random.random() < HABITABILITY_CHANCE
     
 
         planet = Planet(name=f"Planet-{i}", x=x, y=y, type=planet_type, size=random.uniform(0.5, 2.5), water_percentage=water_percentage, climate=climate, atmosphere=atmosphere, gravity=gravity, habitable=habitable, color=(0, 0, 0))
@@ -186,8 +187,7 @@ def generate_binary_star_system() -> BinaryStarSystem:
 
 def generate_star_system() -> Union[Star, BinaryStarSystem]:
 
-    random_value = random.random()
-    if random_value < 0.7:
+    if random.random() < SINGLE_STAR_PROBABILITY:
         return generate_star()
     else:
         return generate_binary_star_system()

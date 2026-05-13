@@ -1,7 +1,7 @@
 import json
 import random
 from entities import Planet, LifeForm
-import random
+from settings import MAX_LIFE_FORMS_PER_PLANET
 
 life_types = ["Aquatic", "Terrestrial", "Subterranean"]
 life_forms = ["Fish", "Mollusk", "Coral", "Plant", "Amphibian", "Arthropod", "Insectoid", "Fungal", "Avian", "Mammal", "Reptile"]
@@ -21,7 +21,7 @@ def save_life_forms(life_forms: list[LifeForm]) -> None:
 def generate_life(planets: list[Planet]) -> list[LifeForm]:
     life_forms = []
     for planet in planets:
-        num_life_forms = random.randint(1, 3)
+        num_life_forms = random.randint(1, MAX_LIFE_FORMS_PER_PLANET)
         for _ in range(num_life_forms):
             life = generate_life_form(planet)
             if life:

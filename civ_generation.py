@@ -1,6 +1,6 @@
 import random
 from entities import LifeForm, Tribe, LocationTrait, ResourceTrait
-from settings import MAP_HEIGHT, MAP_WIDTH
+from settings import MAP_HEIGHT, MAP_WIDTH, TRIBES_PER_LIFE_FORM_MIN, TRIBES_PER_LIFE_FORM_MAX
 
 def generate_tribe_name(life: LifeForm) -> str:
     if life.type == "Reptile":
@@ -26,7 +26,7 @@ def generate_tribe_name(life: LifeForm) -> str:
 def generate_tribes(life_forms: list[LifeForm], map_data: dict) -> list[Tribe]:
     tribes = []
     for life in life_forms:
-        num_tribes = random.randint(1, 5)
+        num_tribes = random.randint(TRIBES_PER_LIFE_FORM_MIN, TRIBES_PER_LIFE_FORM_MAX)
         for _ in range(num_tribes):
             tribe_name = generate_tribe_name(life)
             

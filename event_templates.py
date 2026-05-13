@@ -38,7 +38,7 @@ CLIMATE_PLANET_TEMPLATES = {
         "The wells ran dry and the soil cracked as drought strangled {planet}.",
     ],
     "Flood": [
-        "Rivers overflowed their banks on {planet} as a great flood swept through the lowlands.",
+        "Rivers overflowed the banks on {planet} as a great flood swept through the lowlands.",
         "Torrential rains turned rivers into monsters on {planet}, flooding entire regions.",
         "A catastrophic flood drowned the lowlands of {planet}.",
         "The waters rose on {planet}, swallowing settlements and driving people from their homes.",
@@ -178,10 +178,10 @@ CONFLICT_LOSER_DESTROYED_TEMPLATES = [
 ]
 
 CONFLICT_LOSER_WEAKENED_TEMPLATES = [
-    "{tribe} limped away from the conflict, badly diminished.",
+    "{tribe} pulled away from the conflict, badly diminished.",
     "The defeat left {tribe} weakened and struggling to recover.",
     "{tribe} survived the conflict, but only barely.",
-    "Battered and broken, {tribe} retreated to lick its wounds.",
+    "Battered and broken, {tribe} retreated.",
 ]
 
 MERGE_TEMPLATES = [

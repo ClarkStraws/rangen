@@ -1,16 +1,16 @@
 {
   "life_forms": [
     {
-      "name": "Insectoid of Planet-1",
+      "name": "Plant of Planet-1",
       "planet": "Planet-1",
       "habitat": "Terrestrial",
-      "type": "Insectoid"
+      "type": "Plant"
     },
     {
-      "name": "Reptile of Planet-1",
+      "name": "Plant of Planet-1",
       "planet": "Planet-1",
       "habitat": "Terrestrial",
-      "type": "Reptile"
+      "type": "Plant"
     }
   ]
 }
