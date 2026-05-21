@@ -1,7 +1,7 @@
 import json
 import random
 from entities import Planet, LifeForm
-from settings import MAX_LIFE_FORMS_PER_PLANET
+from generator_settings import MAX_LIFE_FORMS_PER_PLANET
 
 life_types = ["Aquatic", "Terrestrial", "Subterranean"]
 life_forms = ["Fish", "Mollusk", "Coral", "Plant", "Amphibian", "Arthropod", "Insectoid", "Fungal", "Avian", "Mammal", "Reptile"]

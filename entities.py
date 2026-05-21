@@ -3,8 +3,6 @@ from random import random
 from typing import List, Tuple, Dict, Optional
 from enum import Enum, auto
 from abc import ABC, abstractmethod
-from settings import MAP_WIDTH, MAP_HEIGHT
-import random
 from math import sqrt
 
 class BinaryArchetype(Enum):
@@ -112,3 +110,56 @@ class Tribe:
     strength: float = 1.0  # relative strength (military, economic, etc.)
     technology: float = 1.0  # relative technological level
     is_eliminated: bool = False
+
+@dataclass
+class HistoryEvent:
+    category: str   # "tick", "climate", "climate_tribe", "societal", "conflict", "conflict_result", "merge"
+    event_type: str
+    tick: int = 0
+    tribe: str = ""
+    enemy: str = ""
+    planet: str = ""
+    outcome: str = ""   # "destroyed", "affected", "won", "defended", "weakened", "merged"
+
+
+@dataclass
+class SimulationResult:
+    tribes: list
+    history: list          # list[HistoryEvent]
+    survivors: list
+    eliminated: list
+
+
+class SimulationPhase(ABC):
+
+    @abstractmethod
+    def apply_passive_events(self, tribes: list[Tribe], tick: int) -> list[HistoryEvent]:
+        '''Apply passive events (e.g. climate, societal) to all tribes and return history events.'''
+        ...
+
+    @abstractmethod
+    def run_interactions(self, tribes: list[Tuple[Tribe, Tribe]], tick: int) -> list[HistoryEvent]:
+        '''Run interactions between tribes and return history events.'''
+        ...
+
+    @abstractmethod
+    def generate_contact_events(self, tribes: list[Tribe]) -> list[Tuple[Tribe, Tribe]]:
+        '''Generate contact events between tribes.'''
+        ...
+
+    def run(self, tribes: list[Tribe], ticks: int = 10) -> SimulationResult:
+        """Shared simulation loop — identical across all phases."""
+        history = []
+        eliminated = []
+
+        contacted_tribes = self.generate_contact_events(tribes)
+
+        for tick in range(ticks):
+            history.append(HistoryEvent(category="tick", event_type="marker", tick=tick + 1))
+            history.extend(self.apply_passive_events(tribes, tick=tick + 1))
+            history.extend(self.run_interactions(contacted_tribes, tick=tick + 1))
+            tribes = [t for t in tribes if not t.is_eliminated]
+
+        survivors = [t for t in tribes if not t.is_eliminated]
+        return SimulationResult(tribes, history, survivors, eliminated)
+    

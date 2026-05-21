@@ -1,6 +1,7 @@
 import random
 from entities import LifeForm, Tribe, LocationTrait, ResourceTrait
-from settings import MAP_HEIGHT, MAP_WIDTH, TRIBES_PER_LIFE_FORM_MIN, TRIBES_PER_LIFE_FORM_MAX
+from settings import MAP_HEIGHT, MAP_WIDTH
+from generator_settings import TRIBES_PER_LIFE_FORM_MIN, TRIBES_PER_LIFE_FORM_MAX
 
 def generate_tribe_name(life: LifeForm) -> str:
     if life.type == "Reptile":

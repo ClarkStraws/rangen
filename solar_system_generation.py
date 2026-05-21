@@ -2,7 +2,7 @@ import random
 from typing import Union, Optional, List
 from entities import Star, BinaryStarSystem, BinaryArchetype, BinaryOrbitType, ZoneProfile, Planet
 from profiles import generate_planet_profile
-from settings import SINGLE_STAR_PROBABILITY, HABITABILITY_CHANCE
+from generator_settings import SINGLE_STAR_PROBABILITY, HABITABILITY_CHANCE
 import math
 import json
 
