@@ -133,6 +133,80 @@ SOCIETAL_TEMPLATES = {
         "Brothers turned against brothers in {tribe} as civil war erupted.",
         "Internal conflict consumed {tribe} as competing factions waged war on one another.",
     ],
+
+    # --- Middle Ages societal events ---
+    "Peasant Revolt": [
+        "The peasants of {tribe} took up arms against their lords, demanding an end to their suffering.",
+        "Fields lay untended as the common folk of {tribe} rose in revolt against the nobility.",
+        "A peasant uprising swept through {tribe}, burning manor houses and storehouses alike.",
+        "Driven to the brink, the laborers of {tribe} turned on their masters in open revolt.",
+    ],
+    "Golden Age": [
+        "{tribe} entered a golden age of prosperity, its halls filled with art, learning, and wealth.",
+        "Trade routes flourished and coffers overflowed as {tribe} basked in an age of plenty.",
+        "Scholars and craftsmen alike thrived in {tribe} as the kingdom entered its golden age.",
+        "Peace and prosperity settled over {tribe}, marking the dawn of a golden era.",
+    ],
+    "Trade Boom": [
+        "Merchant caravans poured into {tribe}, swelling its markets with goods from distant lands.",
+        "{tribe} became a hub of commerce as trade routes shifted to favor its ports and roads.",
+        "Coin flowed freely through {tribe} as a sudden boom in trade enriched its people.",
+        "New markets opened across {tribe}'s lands, and merchants grew fat on the profits.",
+    ],
+    "Architectural Marvel": [
+        "Master builders in {tribe} raised a wonder of stone and spire that would endure for ages.",
+        "{tribe} completed a great cathedral that drew pilgrims and admirers from afar.",
+        "A magnificent fortress rose over {tribe}'s lands, a testament to the kingdom's might.",
+        "The skyline of {tribe} was forever changed by the construction of a towering monument.",
+    ],
+    "Crusade Declared": [
+        "Priests and nobles of {tribe} called for a holy crusade against the unbelievers.",
+        "{tribe} raised its banners and marched to war in the name of its faith.",
+        "A decree from on high sent the warriors of {tribe} on a holy crusade.",
+        "Zealots within {tribe} rallied the people to march against the enemies of their god.",
+    ],
+    "Religious Reformation": [
+        "A reformist movement swept through {tribe}, challenging the authority of the old clergy.",
+        "{tribe}'s faith was reshaped as reformers called for a return to older, purer ways.",
+        "Heated debate over doctrine split the clergy of {tribe}, and reform followed.",
+        "New interpretations of the old scriptures took hold in {tribe}, reforming the faith.",
+    ],
+    "Scientific Awakening": [
+        "Scholars in {tribe} began to question old beliefs, sparking a wave of inquiry and discovery.",
+        "{tribe} entered an age of reason as thinkers turned from superstition to observation.",
+        "A spirit of inquiry swept through {tribe}, and old myths gave way to new understanding.",
+        "The minds of {tribe} turned toward science, charting the stars and questioning the heavens.",
+    ],
+    "Humanist Movement": [
+        "A new philosophy took root in {tribe}, placing human reason and dignity above dogma.",
+        "Thinkers in {tribe} championed the value of the individual, reshaping the tribe's worldview.",
+        "{tribe} embraced a humanist awakening, prizing knowledge, art, and reason.",
+        "The old certainties crumbled in {tribe} as humanist ideas spread among the people.",
+    ],
+    "Guild Formation": [
+        "Craftsmen and merchants in {tribe} banded together, forming powerful guilds to protect their trades.",
+        "{tribe} saw the rise of organized guilds that came to dominate its economy.",
+        "New brotherhoods of trade and craft formed in {tribe}, reshaping its social order.",
+        "The artisans of {tribe} united into guilds, gaining wealth and political influence.",
+    ],
+    "Feudal Consolidation": [
+        "Lords across {tribe}'s lands swore fealty to a single crown, consolidating power.",
+        "{tribe} restructured itself under a feudal order, binding lords and vassals together.",
+        "A web of oaths and obligations bound the nobility of {tribe} into a unified hierarchy.",
+        "{tribe} solidified its feudal structure, strengthening the bonds between crown and lords.",
+    ],
+    "Succession Crisis": [
+        "The death of its ruler plunged {tribe} into a bitter struggle over succession.",
+        "Rival claimants to the throne tore {tribe} apart in a contest for the crown.",
+        "{tribe} teetered on the edge of collapse as factions warred over the right to rule.",
+        "With no clear heir, {tribe} fractured into feuding camps vying for the throne.",
+    ],
+    "Royal Conspiracy": [
+        "Whispers of betrayal echoed through the halls of {tribe} as a plot against the throne unfolded.",
+        "A conspiracy among the nobles of {tribe} nearly toppled the ruling house.",
+        "Treachery from within nearly brought down the rulers of {tribe}.",
+        "Plots and counterplots consumed the court of {tribe}, weakening the kingdom from within.",
+    ],
 }
 
 SOCIETAL_DESTROYED_TEMPLATES = [
@@ -191,12 +265,70 @@ MERGE_TEMPLATES = [
     "{tribe} welcomed {enemy} into the fold on {planet}, and the two became one.",
 ]
 
+# --- Middle Ages: territorial conflict ---
+CONFLICT_TERRITORIAL_WON_TEMPLATES = [
+    "{tribe} seized disputed lands from {enemy} after a hard-fought campaign on {planet}.",
+    "The armies of {tribe} broke through {enemy}'s defenses and claimed new territory on {planet}.",
+    "{tribe} emerged victorious in a border war with {enemy}, expanding its reach on {planet}.",
+    "After a long campaign, {tribe} forced {enemy} to cede ground on {planet}.",
+]
+
+CONFLICT_TERRITORIAL_DEFENDED_TEMPLATES = [
+    "{tribe} repelled {enemy}'s invasion, holding the contested borderlands of {planet}.",
+    "The defenders of {tribe} turned back {enemy}'s armies at the frontier of {planet}.",
+    "{tribe} stood firm against {enemy}'s incursion, defending its lands on {planet}.",
+    "Despite the assault, {tribe} held its ground against {enemy} on {planet}.",
+]
+
+# --- Middle Ages: religious conflict (crusades) ---
+CONFLICT_CRUSADE_WON_TEMPLATES = [
+    "{tribe} marched under holy banners and crushed {enemy} in a brutal crusade on {planet}.",
+    "The faithful of {tribe} overwhelmed {enemy} in a war waged in the name of their god on {planet}.",
+    "{tribe} won a decisive victory over {enemy} in a clash of creeds on {planet}.",
+    "Driven by zeal, the warriors of {tribe} broke {enemy}'s armies on {planet}.",
+]
+
+CONFLICT_CRUSADE_DEFENDED_TEMPLATES = [
+    "{tribe} turned back the crusaders of {enemy}, defending its faith on {planet}.",
+    "The devotion of {tribe}'s people held firm against {enemy}'s holy war on {planet}.",
+    "{tribe} repelled {enemy}'s religious campaign, preserving its beliefs on {planet}.",
+    "Faith and steel together carried {tribe} through {enemy}'s crusade on {planet}.",
+]
+
+CONFLICT_TEMPLATE_SETS = {
+    "resource": (CONFLICT_RESOURCE_WON_TEMPLATES, CONFLICT_RESOURCE_DEFENDED_TEMPLATES),
+    "religious": (CONFLICT_RELIGIOUS_WON_TEMPLATES, CONFLICT_RELIGIOUS_DEFENDED_TEMPLATES),
+    "territorial": (CONFLICT_TERRITORIAL_WON_TEMPLATES, CONFLICT_TERRITORIAL_DEFENDED_TEMPLATES),
+    "crusade": (CONFLICT_CRUSADE_WON_TEMPLATES, CONFLICT_CRUSADE_DEFENDED_TEMPLATES),
+}
+
+# --- Middle Ages: deliberate alliances (royal marriages, treaties, vassalage) ---
+ALLIANCE_TEMPLATES = [
+    "{tribe} and {enemy} forged an alliance on {planet}, binding their fates together.",
+    "Through marriage and treaty, {tribe} and {enemy} united their crowns on {planet}.",
+    "{tribe} drew {enemy} into its realm through a pact sealed on {planet}.",
+    "Old rivalries gave way to unity as {tribe} and {enemy} joined as one on {planet}.",
+]
+
+ERA_TRANSITION_TEMPLATES = {
+    "middle_ages": [
+        "Generations passed. The scattered tribes of the ancient world grew into kingdoms, and the Middle Ages began.",
+        "The old tribal ways faded into legend as villages became cities and chieftains became kings — the Middle Ages had dawned.",
+        "Out of the ashes of the ancient world rose castles, crowns, and creeds. A new age had begun.",
+    ],
+}
+
 
 def render_event(event) -> str:
     ctx = dict(tribe=event.tribe, enemy=event.enemy, planet=event.planet)
 
     if event.category == "tick":
         return f"\n=== Age {event.tick} ==="
+
+    elif event.category == "era":
+        templates = ERA_TRANSITION_TEMPLATES.get(event.event_type, ["A new age dawned across the land."])
+        banner = "=" * 50
+        return f"\n\n{banner}\n{random.choice(templates)}\n{banner}\n"
 
     elif event.category == "climate":
         templates = CLIMATE_PLANET_TEMPLATES.get(event.event_type, [f"A {{event.event_type}} occurred on {{planet}}."])
@@ -214,10 +346,10 @@ def render_event(event) -> str:
         return random.choice(templates).format(**ctx)
 
     elif event.category == "conflict":
-        if event.event_type == "resource":
-            templates = CONFLICT_RESOURCE_WON_TEMPLATES if event.outcome == "won" else CONFLICT_RESOURCE_DEFENDED_TEMPLATES
-        else:
-            templates = CONFLICT_RELIGIOUS_WON_TEMPLATES if event.outcome == "won" else CONFLICT_RELIGIOUS_DEFENDED_TEMPLATES
+        won_templates, defended_templates = CONFLICT_TEMPLATE_SETS.get(
+            event.event_type, (CONFLICT_RESOURCE_WON_TEMPLATES, CONFLICT_RESOURCE_DEFENDED_TEMPLATES)
+        )
+        templates = won_templates if event.outcome == "won" else defended_templates
         return random.choice(templates).format(**ctx)
 
     elif event.category == "conflict_result":
@@ -225,6 +357,7 @@ def render_event(event) -> str:
         return random.choice(templates).format(**ctx)
 
     elif event.category == "merge":
-        return random.choice(MERGE_TEMPLATES).format(**ctx)
+        templates = ALLIANCE_TEMPLATES if event.event_type == "alliance" else MERGE_TEMPLATES
+        return random.choice(templates).format(**ctx)
 
     return ""
