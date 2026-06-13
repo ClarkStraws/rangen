@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "School", "plural": "Schools"},
+    {"singular": "Shoal", "plural": "Shoals"},
+    {"singular": "Tide", "plural": "Tides"},
+    {"singular": "Current", "plural": "Currents"},
+    {"singular": "Depth", "plural": "Depths"},
+    {"singular": "Stream", "plural": "Streams"},
+    {"singular": "Wave", "plural": "Waves"},
+    {"singular": "Channel", "plural": "Channels"},
+    {"singular": "Drift", "plural": "Drifts"},
+    {"singular": "Lagoon", "plural": "Lagoons"},
+    {"singular": "Abyss", "plural": "Abysses"},
+    {"singular": "Shimmer", "plural": "Shimmers"}
+  ],
+  "adjectives": [
+    "Finned",
+    "Gilled",
+    "Streamlined",
+    "Bioluminescent",
+    "Schooling",
+    "Deep-diving",
+    "Silver-scaled",
+    "Tidal",
+    "Briny",
+    "Sleek"
+  ]
+}

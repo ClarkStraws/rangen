@@ -15,7 +15,7 @@ def generate_map(planet: Planet) -> None:
     map_data = []
     biome_types = ["Water", "Desert", "Forest", "Mountains", "Plains", "Tundra"]
 
-    for y in range():
+    for y in range(MAP_HEIGHT):
         row = []
         for x in range(MAP_WIDTH):
             # Sample noise and adjust based on planet properties

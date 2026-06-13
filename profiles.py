@@ -27,19 +27,19 @@ def _generate_zone_profile(star: Star, orbit_start_au: float = 0.1, orbit_end_au
 
         'F': dict(frost_line_au=3,   inner_zone_end_au=4,   outer_zone_end_au=50,  min_planets=4, max_planets=7,
                   inner_type_weights={"Rocky": 0.3,  "SuperEarth": 0.3,  "GasGiant": 0.3,  "IceGiant": 0.1},
-                  outer_type_weights={"GasGiant": 0.5, "IceGiant": 0.5}),
+                  outer_type_weights={"GasGiant": 0.5, "IceGiant": 0.35, "Rocky": 0.1, "SuperEarth": 0.05}),
 
         'G': dict(frost_line_au=2,   inner_zone_end_au=4,   outer_zone_end_au=40,  min_planets=5, max_planets=8,
                   inner_type_weights={"Rocky": 0.4,  "SuperEarth": 0.4,  "GasGiant": 0.15, "IceGiant": 0.05},
-                  outer_type_weights={"GasGiant": 0.4, "IceGiant": 0.6}),
+                  outer_type_weights={"GasGiant": 0.4, "IceGiant": 0.4, "Rocky": 0.1, "SuperEarth": 0.1}),
 
         'K': dict(frost_line_au=1.5, inner_zone_end_au=3,   outer_zone_end_au=30,  min_planets=3, max_planets=7,
                   inner_type_weights={"Rocky": 0.5,  "SuperEarth": 0.4,  "GasGiant": 0.08, "IceGiant": 0.02},
-                  outer_type_weights={"GasGiant": 0.3, "IceGiant": 0.7}),
+                  outer_type_weights={"GasGiant": 0.3, "IceGiant": 0.45, "Rocky": 0.15, "SuperEarth": 0.1}),
 
         'M': dict(frost_line_au=0.5, inner_zone_end_au=1.5, outer_zone_end_au=10,  min_planets=2, max_planets=5,
                   inner_type_weights={"Rocky": 0.6,  "SuperEarth": 0.3,  "GasGiant": 0.08, "IceGiant": 0.02},
-                  outer_type_weights={"GasGiant": 0.2, "IceGiant": 0.8}),
+                  outer_type_weights={"GasGiant": 0.2, "IceGiant": 0.55, "Rocky": 0.15, "SuperEarth": 0.1}),
     }
 
     p = profiles.get(spectral_class, profiles['M'])

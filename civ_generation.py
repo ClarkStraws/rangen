@@ -2,23 +2,12 @@ import random
 from entities import LifeForm, Tribe, LocationTrait, ResourceTrait
 from settings import MAP_HEIGHT, MAP_WIDTH
 from generator_settings import TRIBES_PER_LIFE_FORM_MIN, TRIBES_PER_LIFE_FORM_MAX
+from species_names import get_name_list
 
 def generate_tribe_name(life: LifeForm) -> str:
-    if life.type == "Reptile":
-        file = "data/names/reptile/reptile_names.txt"
-    elif life.type == "Insectoid":
-        file = "data/names/insectoid/insectoid_names.txt"
-    elif life.type == "Arthropod":
-        file = "data/names/insectoid/insectoid_names.txt" # reusing insectoid names for arthropods
-    elif life.type == "Avian":
-        file = "data/names/avian/avian_names.txt"
-    elif life.type == "Plant":
-        file = "data/names/plantoid/plantoid_names.txt"
-    else:
+    names = get_name_list(life.type)
+    if not names:
         return f"{life.type} Tribe {random.randint(1, 1000)}"
-    
-    with open(file, "r") as f:
-        names = [line.strip() for line in f.readlines()]
 
     return random.choice(names) + " (" + life.type + ")"
 
@@ -61,6 +50,7 @@ def generate_tribes(life_forms: list[LifeForm], map_data: dict) -> list[Tribe]:
             tribe = Tribe(
                 name=tribe_name,
                 home_planet=life.planet,
+                species=life.type,
                 location=random_location_xy,
                 location_trait=location_trait,
                 resource_trait=resource_trait,

@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Pack", "plural": "Packs"},
+    {"singular": "Herd", "plural": "Herds"},
+    {"singular": "Den", "plural": "Dens"},
+    {"singular": "Clan", "plural": "Clans"},
+    {"singular": "Pride", "plural": "Prides"},
+    {"singular": "Warren", "plural": "Warrens"},
+    {"singular": "Burrow", "plural": "Burrows"},
+    {"singular": "Litter", "plural": "Litters"},
+    {"singular": "Drove", "plural": "Droves"},
+    {"singular": "Troop", "plural": "Troops"},
+    {"singular": "Lair", "plural": "Lairs"},
+    {"singular": "Brood", "plural": "Broods"}
+  ],
+  "adjectives": [
+    "Furred",
+    "Warm-blooded",
+    "Pack-bound",
+    "Burrowing",
+    "Nursing",
+    "Territorial",
+    "Migratory",
+    "Clawed",
+    "Whiskered",
+    "Loyal"
+  ]
+}

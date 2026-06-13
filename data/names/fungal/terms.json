@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Ring", "plural": "Rings"},
+    {"singular": "Web", "plural": "Webs"},
+    {"singular": "Network", "plural": "Networks"},
+    {"singular": "Patch", "plural": "Patches"},
+    {"singular": "Mat", "plural": "Mats"},
+    {"singular": "Growth", "plural": "Growths"},
+    {"singular": "Bloom", "plural": "Blooms"},
+    {"singular": "Cluster", "plural": "Clusters"},
+    {"singular": "Colony", "plural": "Colonies"},
+    {"singular": "Spread", "plural": "Spreads"},
+    {"singular": "Lattice", "plural": "Lattices"},
+    {"singular": "Veil", "plural": "Veils"}
+  ],
+  "adjectives": [
+    "Spore-bearing",
+    "Mycelial",
+    "Decomposing",
+    "Symbiotic",
+    "Luminescent",
+    "Networked",
+    "Rot-feeding",
+    "Filamentous",
+    "Mottled",
+    "Damp"
+  ]
+}

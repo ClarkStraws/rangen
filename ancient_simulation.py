@@ -112,7 +112,7 @@ class AncientHistoryPhase(SimulationPhase):
                 else:
                     event_type = "Civil War"
                     tribe.social_scale += random.uniform(-0.2, 0.2)
-                    tribe.strength *= random.uniform(0.1, 0.5)
+                    tribe.strength *= random.uniform(0.5, 0.9)
 
                 if tribe.strength < TRIBE_ELIMINATION_THRESHOLD:
                     tribe.is_eliminated = True
@@ -141,7 +141,7 @@ class AncientHistoryPhase(SimulationPhase):
 
                     if random.random() < win_chance:
                         events.append(HistoryEvent(category="conflict", event_type="resource", tick=tick, tribe=stronger.name, enemy=weaker.name, planet=stronger.home_planet.name, outcome="won"))
-                        weaker.strength *= random.uniform(0.1, 0.9)
+                        weaker.strength *= random.uniform(0.25, 0.9)
                         stronger.resource_trait = ResourceTrait.RICH
                         weaker.resource_trait = ResourceTrait.POOR
                         if weaker.strength < TRIBE_ELIMINATION_THRESHOLD:
@@ -151,7 +151,7 @@ class AncientHistoryPhase(SimulationPhase):
                             events.append(HistoryEvent(category="conflict_result", event_type="resource", tick=tick, tribe=weaker.name, outcome="weakened"))
                     else:
                         events.append(HistoryEvent(category="conflict", event_type="resource", tick=tick, tribe=weaker.name, enemy=stronger.name, planet=weaker.home_planet.name, outcome="defended"))
-                        stronger.strength *= random.uniform(0.1, 0.9)
+                        stronger.strength *= random.uniform(0.25, 0.9)
                         weaker.resource_trait = ResourceTrait.RICH
                         stronger.resource_trait = ResourceTrait.POOR
                         if stronger.strength < TRIBE_ELIMINATION_THRESHOLD:
@@ -174,7 +174,7 @@ class AncientHistoryPhase(SimulationPhase):
 
                     if random.random() < win_chance:
                         events.append(HistoryEvent(category="conflict", event_type="religious", tick=tick, tribe=stronger.name, enemy=weaker.name, planet=stronger.home_planet.name, outcome="won"))
-                        weaker.strength *= random.uniform(0.1, 0.9)
+                        weaker.strength *= random.uniform(0.25, 0.9)
                         if weaker.strength < TRIBE_ELIMINATION_THRESHOLD:
                             weaker.is_eliminated = True
                             events.append(HistoryEvent(category="conflict_result", event_type="religious", tick=tick, tribe=weaker.name, outcome="destroyed"))
@@ -182,7 +182,7 @@ class AncientHistoryPhase(SimulationPhase):
                             events.append(HistoryEvent(category="conflict_result", event_type="religious", tick=tick, tribe=weaker.name, outcome="weakened"))
                     else:
                         events.append(HistoryEvent(category="conflict", event_type="religious", tick=tick, tribe=weaker.name, enemy=stronger.name, planet=weaker.home_planet.name, outcome="defended"))
-                        stronger.strength *= random.uniform(0.1, 0.9)
+                        stronger.strength *= random.uniform(0.25, 0.9)
                         if stronger.strength < TRIBE_ELIMINATION_THRESHOLD:
                             stronger.is_eliminated = True
                             events.append(HistoryEvent(category="conflict_result", event_type="religious", tick=tick, tribe=stronger.name, outcome="destroyed"))

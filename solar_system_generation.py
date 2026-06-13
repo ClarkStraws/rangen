@@ -22,6 +22,11 @@ def generate_solar_system() -> None:
     for zone in planet_profile.zones:
         planets.extend(generate_planets_in_zone(zone))
 
+    # zones are generated independently and each names its planets starting from
+    # "Planet-0", so renumber across the whole system to keep names unique
+    for i, planet in enumerate(planets):
+        planet.name = f"Planet-{i}"
+
     print(f"\nGenerated {len(planets)} planets:")
     for planet in planets:
         print(f"  {planet.name}: Type {planet.type}, Size {planet.size:.2f} Earths, Habitable: {planet.habitable}, Color: {planet.color}")
@@ -82,37 +87,34 @@ def generate_planets_in_zone(zone: ZoneProfile) -> List[Planet]:
         y = distance * math.sin(angle)
 
         # planet type based on location relative to frost line
-        planet_type = ""
-        water_percentage = 0.0
-        climate = ""
-        atmosphere = ""
-        gravity = 0.0
-        if distance < zone.frost_line_au:
+        in_frost_line = distance < zone.frost_line_au
+        if in_frost_line:
             planet_type = random.choices(list(zone.inner_type_weights.keys()), weights=list(zone.inner_type_weights.values()))[0]
+        else:
+            planet_type = random.choices(list(zone.outer_type_weights.keys()), weights=list(zone.outer_type_weights.values()))[0]
 
-            if planet_type in ["Rocky", "SuperEarth"] and distance > .05:  # Very close planets may lose water, but others can have some
+        if planet_type in ["Rocky", "SuperEarth"]:
+            if distance > .05:  # Very close planets may lose water, but others can have some
                 water_percentage = random.uniform(0, .9)
-                climate = random.choice(["Hot", "Temperate", "Cold"])
+                # rocky worlds beyond the frost line are always cold, regardless of star type
+                climate = random.choice(["Hot", "Temperate", "Cold"]) if in_frost_line else "Cold"
                 atmosphere = random.choice(["Thin", "Breathable", "Thick"])
                 gravity = random.uniform(0.5, 2.0)  # Earth gravity as baseline
-            elif planet_type in ["Rocky", "SuperEarth"] and distance < .05:
+            else:
                 water_percentage = 0.0
                 climate = "Scorching"
                 atmosphere = "Thin"
                 gravity = random.uniform(0.5, 2.0)
-            else:
-                water_percentage = random.uniform(0, 1)
-                climate = random.choice(["Gas Giant", "Ice Giant"])
-                atmosphere = "Thick"
-                gravity = random.uniform(1.0, 3.0)  # Gas giants have stronger gravity
         else:
-            planet_type = random.choices(list(zone.outer_type_weights.keys()), weights=list(zone.outer_type_weights.values()))[0]
+            water_percentage = random.uniform(0, 1)
+            climate = "Gas Giant" if planet_type == "GasGiant" else "Ice Giant"
+            atmosphere = "Thick"
+            gravity = random.uniform(1.0, 3.0)  # Gas giants have stronger gravity
 
-        # habitability - simple model: only rocky/superearths in the inner zone can be habitable
+        # habitability - simple model: only rocky/superearths within the inner zone can be habitable
         habitable = False
         if planet_type in ["Rocky", "SuperEarth"] and distance < zone.inner_zone_end_au:
             habitable = random.random() < HABITABILITY_CHANCE
-    
 
         planet = Planet(name=f"Planet-{i}", x=x, y=y, type=planet_type, size=random.uniform(0.5, 2.5), water_percentage=water_percentage, climate=climate, atmosphere=atmosphere, gravity=gravity, habitable=habitable, color=(0, 0, 0))
         planet = add_planet_color(planet)

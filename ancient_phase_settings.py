@@ -1,6 +1,6 @@
 # --- Simulation: contact ---
 TRIBE_CONTACT_DISTANCE = 150        # map units; tribes closer than this are "in contact"
-TRIBE_ELIMINATION_THRESHOLD = 0.1   # tribe is eliminated when strength drops below this
+TRIBE_ELIMINATION_THRESHOLD = 0.05  # tribe is eliminated when strength drops below this
 
 # --- Simulation: climate events ---
 CATASTROPHIC_EVENT_CHANCE = 0.1     # per-planet chance of meteor/volcano/earthquake/tsunami each tick

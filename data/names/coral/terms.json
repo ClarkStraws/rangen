@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Reef", "plural": "Reefs"},
+    {"singular": "Polyp", "plural": "Polyps"},
+    {"singular": "Atoll", "plural": "Atolls"},
+    {"singular": "Branch", "plural": "Branches"},
+    {"singular": "Cluster", "plural": "Clusters"},
+    {"singular": "Garden", "plural": "Gardens"},
+    {"singular": "Colony", "plural": "Colonies"},
+    {"singular": "Bed", "plural": "Beds"},
+    {"singular": "Lagoon", "plural": "Lagoons"},
+    {"singular": "Spire", "plural": "Spires"},
+    {"singular": "Bloom", "plural": "Blooms"},
+    {"singular": "Thicket", "plural": "Thickets"}
+  ],
+  "adjectives": [
+    "Calcified",
+    "Branching",
+    "Symbiotic",
+    "Polypoid",
+    "Reef-bound",
+    "Colorful",
+    "Sessile",
+    "Porous",
+    "Encrusted",
+    "Coralline"
+  ]
+}

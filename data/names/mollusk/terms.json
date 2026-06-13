@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Bed", "plural": "Beds"},
+    {"singular": "Cluster", "plural": "Clusters"},
+    {"singular": "Brood", "plural": "Broods"},
+    {"singular": "Cove", "plural": "Coves"},
+    {"singular": "Lagoon", "plural": "Lagoons"},
+    {"singular": "Drift", "plural": "Drifts"},
+    {"singular": "Tide", "plural": "Tides"},
+    {"singular": "Swell", "plural": "Swells"},
+    {"singular": "Current", "plural": "Currents"},
+    {"singular": "Reef", "plural": "Reefs"},
+    {"singular": "Shoal", "plural": "Shoals"},
+    {"singular": "Murk", "plural": "Murks"}
+  ],
+  "adjectives": [
+    "Soft-bodied",
+    "Shelled",
+    "Slimy",
+    "Tentacled",
+    "Filter-feeding",
+    "Bioluminescent",
+    "Iridescent",
+    "Sessile",
+    "Spiraled",
+    "Translucent"
+  ]
+}

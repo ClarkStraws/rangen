@@ -101,6 +101,7 @@ class ResourceTrait(Enum):
 class Tribe:
     name: str
     home_planet: Planet
+    species: str = ""  # life form type (e.g. "Reptile", "Insectoid") used for species-flavored naming
     location: Tuple[float, float] = (0.0, 0.0)
     location_trait: LocationTrait = LocationTrait.UNDEFINED
     resource_trait: ResourceTrait = ResourceTrait.UNDEFINED
@@ -110,16 +111,22 @@ class Tribe:
     strength: float = 1.0  # relative strength (military, economic, etc.)
     technology: float = 1.0  # relative technological level
     is_eliminated: bool = False
+    society_name: str = ""     # set when the Modern Age phase founds a named society
+    leader_name: str = ""
+    leader_title: str = ""
+    government_type: str = ""
 
 @dataclass
 class HistoryEvent:
-    category: str   # "tick", "climate", "climate_tribe", "societal", "conflict", "conflict_result", "merge"
+    category: str   # "tick", "climate", "climate_tribe", "societal", "conflict", "conflict_result", "merge", "era", "society", "epilogue"
     event_type: str
     tick: int = 0
     tribe: str = ""
     enemy: str = ""
     planet: str = ""
     outcome: str = ""   # "destroyed", "affected", "won", "defended", "weakened", "merged"
+    leader: str = ""    # leader title + name, used by "society"/"epilogue" events
+    government: str = ""  # government type, used by "society"/"epilogue" events
 
 
 @dataclass

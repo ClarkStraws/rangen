@@ -1,0 +1,28 @@
+{
+  "nouns": [
+    {"singular": "Congress", "plural": "Congresses"},
+    {"singular": "Army", "plural": "Armies"},
+    {"singular": "Chorus", "plural": "Choruses"},
+    {"singular": "Bog", "plural": "Bogs"},
+    {"singular": "Marsh", "plural": "Marshes"},
+    {"singular": "Pond", "plural": "Ponds"},
+    {"singular": "Wetland", "plural": "Wetlands"},
+    {"singular": "Spawn", "plural": "Spawns"},
+    {"singular": "Mire", "plural": "Mires"},
+    {"singular": "Puddle", "plural": "Puddles"},
+    {"singular": "Burrow", "plural": "Burrows"},
+    {"singular": "Brood", "plural": "Broods"}
+  ],
+  "adjectives": [
+    "Amphibious",
+    "Webbed",
+    "Croaking",
+    "Moist",
+    "Metamorphic",
+    "Cold-blooded",
+    "Slick",
+    "Marsh-dwelling",
+    "Camouflaged",
+    "Permeable-skinned"
+  ]
+}

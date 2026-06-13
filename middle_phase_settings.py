@@ -1,6 +1,6 @@
 # --- Simulation: contact ---
 TRIBE_CONTACT_DISTANCE = 350        # map units; kingdoms have grown and can reach one another across far greater distances than tribes once could
-TRIBE_ELIMINATION_THRESHOLD = 0.1   # tribe is eliminated when strength drops below this
+TRIBE_ELIMINATION_THRESHOLD = 0.05  # tribe is eliminated when strength drops below this
 
 # --- Simulation: climate events ---
 CATASTROPHIC_EVENT_CHANCE = 0.07    # lower than the ancient world — established kingdoms are better prepared for disaster
@@ -11,7 +11,7 @@ WEATHER_EVENT_RADIUS_MIN = 80
 WEATHER_EVENT_RADIUS_MAX = 200
 
 # --- Simulation: societal events ---
-SOCIETAL_EVENT_CHANCE = 0.3         # higher than the ancient world — feudal society is more politically and socially complex
+SOCIETAL_EVENT_CHANCE = 0.3         # higher than the ancient world — kingdom society is more politically and socially complex
 POOR_STRENGTH_THRESHOLD = 0.5       # strength below this triggers negative events for non-POOR tribes
 RICH_STRENGTH_THRESHOLD = 0.75      # strength at or above this (+ RICH trait) triggers positive events
 HIGH_RELIGION_THRESHOLD = 0.5       # religion_scale above this triggers religious events
@@ -20,7 +20,7 @@ HIGH_SOCIAL_THRESHOLD = 0.5         # social_scale above this triggers collectiv
 
 # --- Simulation: conflict ---
 RESOURCE_CONFLICT_CHANCE = 0.45     # lower than the ancient world — established trade networks blunt raw resource conflict
-RELIGIOUS_CONFLICT_CHANCE = 0.6     # higher than the ancient world — organized faiths and crusades take center stage
+RELIGIOUS_CONFLICT_CHANCE = 0.6     # higher than the ancient world — organized faiths and zealot wars take center stage
 RELIGIOUS_CONFLICT_THRESHOLD = 0.35 # lower than the ancient world — institutionalized religion makes doctrinal gaps easier to ignite
 
 # --- Simulation: merging ---
@@ -32,5 +32,7 @@ SURVIVOR_SIZE_GROWTH_MIN = 1.5       # surviving tribes swell into kingdoms acro
 SURVIVOR_SIZE_GROWTH_MAX = 3.0
 SURVIVOR_STRENGTH_GROWTH_MIN = 1.1   # consolidation leaves them sturdier than they were as scattered tribes
 SURVIVOR_STRENGTH_GROWTH_MAX = 1.4
+SURVIVOR_STRENGTH_RECOVERY_FLOOR = 0.4 # tribes that limped through the ancient world rebuild to at least this strength
+                                        # before the growth multiplier is applied
 SURVIVOR_TECHNOLOGY_GROWTH_MIN = 1.2 # generations of progress carry their know-how forward
 SURVIVOR_TECHNOLOGY_GROWTH_MAX = 1.6
