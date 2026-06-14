@@ -1,27 +1,43 @@
 {
     "star_system": {
-        "name": "Star-9598",
-        "x": 97.58381342155158,
-        "y": -97.85860021103024,
-        "classification": "M",
-        "color": [
-            255,
-            204,
-            111
-        ]
+        "primary": {
+            "name": "Star-8379",
+            "x": -72.2397334062457,
+            "y": -7.399462926794186,
+            "classification": "M",
+            "color": [
+                255,
+                204,
+                111
+            ]
+        },
+        "secondary": {
+            "name": "Star-3222",
+            "x": -85.40524132142164,
+            "y": 20.322200251143755,
+            "classification": "M",
+            "color": [
+                255,
+                204,
+                111
+            ]
+        },
+        "archetype": "TWIN_MAIN_SEQUENCE",
+        "orbit_type": "S_TYPE",
+        "separation_au": 2.487598324325742
     },
     "planets": [
         {
             "name": "Planet-0",
-            "x": 2.9924148655663934,
-            "y": 0.2254053678600463,
+            "x": -5.632352255488535,
+            "y": 3.139555444601981,
             "type": "IceGiant",
-            "size": 1.7878870109037992,
+            "size": 1.336330978658379,
             "habitable": false,
-            "water_percentage": 0.8070442585718237,
+            "water_percentage": 0.16291784374318985,
             "climate": "Ice Giant",
             "atmosphere": "Thick",
-            "gravity": 2.0795490812736555,
+            "gravity": 2.746067150246812,
             "color": [
                 150,
                 200,
@@ -30,15 +46,15 @@
         },
         {
             "name": "Planet-1",
-            "x": 1.839637553436683,
-            "y": 2.12037511649348,
+            "x": -0.5315087710812074,
+            "y": 7.839255285640035,
             "type": "IceGiant",
-            "size": 2.1242877512224343,
+            "size": 0.7956549660881431,
             "habitable": false,
-            "water_percentage": 0.09903302276394699,
+            "water_percentage": 0.964268423522273,
             "climate": "Ice Giant",
             "atmosphere": "Thick",
-            "gravity": 2.7809514877767296,
+            "gravity": 1.2588611716744198,
             "color": [
                 150,
                 200,
@@ -47,15 +63,15 @@
         },
         {
             "name": "Planet-2",
-            "x": 2.4959443763447124,
-            "y": 1.6354730465731906,
+            "x": -4.087392766190332,
+            "y": -7.117618041306076,
             "type": "IceGiant",
-            "size": 2.495249170373654,
+            "size": 1.103649793303848,
             "habitable": false,
-            "water_percentage": 0.3944741843498799,
+            "water_percentage": 0.042306282871337864,
             "climate": "Ice Giant",
             "atmosphere": "Thick",
-            "gravity": 1.038348439343993,
+            "gravity": 1.9052289417669874,
             "color": [
                 150,
                 200,
@@ -64,32 +80,83 @@
         },
         {
             "name": "Planet-3",
-            "x": 8.95824092935279,
-            "y": 1.307580322848845,
-            "type": "SuperEarth",
-            "size": 1.6980692075693453,
+            "x": 1.5179088792342348,
+            "y": 1.9361630346562058,
+            "type": "IceGiant",
+            "size": 1.7183719854486996,
             "habitable": false,
-            "water_percentage": 0.23673016384900467,
-            "climate": "Cold",
-            "atmosphere": "Breathable",
-            "gravity": 1.714915503876549,
+            "water_percentage": 0.8404302833328638,
+            "climate": "Ice Giant",
+            "atmosphere": "Thick",
+            "gravity": 2.2568971237626965,
             "color": [
-                100,
                 150,
-                200
+                200,
+                250
             ]
         },
         {
             "name": "Planet-4",
-            "x": 2.3749083348447995,
-            "y": -0.2890180481222352,
-            "type": "IceGiant",
-            "size": 0.9741684083284068,
+            "x": 0.7705591143866307,
+            "y": 0.4280752714621966,
+            "type": "Rocky",
+            "size": 2.1570492662928955,
+            "habitable": true,
+            "water_percentage": 0.5721170787025962,
+            "climate": "Cold",
+            "atmosphere": "Breathable",
+            "gravity": 1.965342006967636,
+            "color": [
+                150,
+                100,
+                50
+            ]
+        },
+        {
+            "name": "Planet-5",
+            "x": -3.920483667190006,
+            "y": 7.75070291332655,
+            "type": "GasGiant",
+            "size": 2.106281801732547,
             "habitable": false,
-            "water_percentage": 0.7501002042182071,
+            "water_percentage": 0.8529368188947793,
+            "climate": "Gas Giant",
+            "atmosphere": "Thick",
+            "gravity": 2.540255098687613,
+            "color": [
+                200,
+                150,
+                100
+            ]
+        },
+        {
+            "name": "Planet-6",
+            "x": -1.9313531324809208,
+            "y": 7.1112820502299945,
+            "type": "GasGiant",
+            "size": 1.181494087251813,
+            "habitable": false,
+            "water_percentage": 0.22350584120971873,
+            "climate": "Gas Giant",
+            "atmosphere": "Thick",
+            "gravity": 1.4424582144559501,
+            "color": [
+                200,
+                150,
+                100
+            ]
+        },
+        {
+            "name": "Planet-7",
+            "x": 2.4645667656844403,
+            "y": -3.8728627107073845,
+            "type": "IceGiant",
+            "size": 2.4781224864507534,
+            "habitable": false,
+            "water_percentage": 0.2118791679846057,
             "climate": "Ice Giant",
             "atmosphere": "Thick",
-            "gravity": 1.7404799738917343,
+            "gravity": 1.4036051505072427,
             "color": [
                 150,
                 200,

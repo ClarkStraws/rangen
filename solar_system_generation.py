@@ -1,14 +1,15 @@
 import random
-from typing import Union, Optional, List
+from typing import Union, Optional, List, Tuple
 from entities import Star, BinaryStarSystem, BinaryArchetype, BinaryOrbitType, ZoneProfile, Planet
 from profiles import generate_planet_profile
-from generator_settings import SINGLE_STAR_PROBABILITY, HABITABILITY_CHANCE
+from generator_settings import SINGLE_STAR_PROBABILITY, HABITABLE_SYSTEM_PROBABILITY
 import math
 import json
 
 
-def generate_solar_system() -> None:
+def generate_solar_system(force_habitable: bool = False) -> None:
     planets = []
+    eligible_planets = []
     star_system = generate_star_system()
     if isinstance(star_system, Star):
         print("Generated single star system:")
@@ -20,12 +21,23 @@ def generate_solar_system() -> None:
         planet_profile = generate_planet_profile(star_system)
 
     for zone in planet_profile.zones:
-        planets.extend(generate_planets_in_zone(zone))
+        zone_planets, zone_eligible_planets = generate_planets_in_zone(zone)
+        planets.extend(zone_planets)
+        eligible_planets.extend(zone_eligible_planets)
 
     # zones are generated independently and each names its planets starting from
     # "Planet-0", so renumber across the whole system to keep names unique
     for i, planet in enumerate(planets):
         planet.name = f"Planet-{i}"
+
+    # a solar system as a whole has a chance of containing one habitable planet,
+    # rather than rolling habitability independently per eligible planet.
+    # prefer planets that fell within their zone's habitable region; if none
+    # did, fall back to any rocky/superearth planet in the system
+    candidate_planets = eligible_planets or [p for p in planets if p.type in ["Rocky", "SuperEarth"]]
+
+    if candidate_planets and (force_habitable or random.random() < HABITABLE_SYSTEM_PROBABILITY):
+        random.choice(candidate_planets).habitable = True
 
     print(f"\nGenerated {len(planets)} planets:")
     for planet in planets:
@@ -75,8 +87,9 @@ def add_star_color(star: Star) -> Star:
         color=color
     )
 
-def generate_planets_in_zone(zone: ZoneProfile) -> List[Planet]:
+def generate_planets_in_zone(zone: ZoneProfile) -> Tuple[List[Planet], List[Planet]]:
     planets = []
+    eligible_planets = []
     num_planets = random.randint(zone.min_planets, zone.max_planets)
     print(f"\nGenerating {num_planets} planets between {zone.orbit_start_au:.2f} AU and {zone.orbit_end_au:.2f} AU")
     for i in range(num_planets):
@@ -111,16 +124,16 @@ def generate_planets_in_zone(zone: ZoneProfile) -> List[Planet]:
             atmosphere = "Thick"
             gravity = random.uniform(1.0, 3.0)  # Gas giants have stronger gravity
 
-        # habitability - simple model: only rocky/superearths within the inner zone can be habitable
-        habitable = False
-        if planet_type in ["Rocky", "SuperEarth"] and distance < zone.inner_zone_end_au:
-            habitable = random.random() < HABITABILITY_CHANCE
+        # habitability eligibility - simple model: only rocky/superearths within the inner zone can be habitable
+        eligible_for_habitability = planet_type in ["Rocky", "SuperEarth"] and distance < zone.inner_zone_end_au
 
-        planet = Planet(name=f"Planet-{i}", x=x, y=y, type=planet_type, size=random.uniform(0.5, 2.5), water_percentage=water_percentage, climate=climate, atmosphere=atmosphere, gravity=gravity, habitable=habitable, color=(0, 0, 0))
+        planet = Planet(name=f"Planet-{i}", x=x, y=y, type=planet_type, size=random.uniform(0.5, 2.5), water_percentage=water_percentage, climate=climate, atmosphere=atmosphere, gravity=gravity, habitable=False, color=(0, 0, 0))
         planet = add_planet_color(planet)
         planets.append(planet)
-    
-    return planets
+        if eligible_for_habitability:
+            eligible_planets.append(planet)
+
+    return planets, eligible_planets
 
         
 

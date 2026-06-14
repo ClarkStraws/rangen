@@ -5,12 +5,17 @@ from entities import Planet, Tribe
 from civ_simulation import simulate_history
 from civ_generation import generate_tribes
 from event_log import process_event_log
+import argparse
 import json
 import os
 
 
 def main() -> None:
-    generate_solar_system()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--habitable", action="store_true", help="Force the generated solar system to contain a habitable planet")
+    args = parser.parse_args()
+
+    generate_solar_system(force_habitable=args.habitable)
     planets = json.load(open("data/solar_system.json", "r"))["planets"]
     planets = [Planet(**planet) for planet in planets]
 
@@ -32,6 +37,7 @@ def main() -> None:
             planet_maps[planet.name] = f.read()
 
     tribes = generate_tribes(life, planet_maps)
+    del planet_maps
 
     # group tribes by their home planet so each life-bearing planet gets its own
     # independent history

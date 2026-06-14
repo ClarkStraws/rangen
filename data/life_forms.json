@@ -1,3 +1,22 @@
 {
-  "life_forms": []
+  "life_forms": [
+    {
+      "name": "Arthropod of Planet-4",
+      "planet": "Planet-4",
+      "habitat": "Terrestrial",
+      "type": "Arthropod"
+    },
+    {
+      "name": "Arthropod of Planet-4",
+      "planet": "Planet-4",
+      "habitat": "Terrestrial",
+      "type": "Arthropod"
+    },
+    {
+      "name": "Insectoid of Planet-4",
+      "planet": "Planet-4",
+      "habitat": "Terrestrial",
+      "type": "Insectoid"
+    }
+  ]
 }
